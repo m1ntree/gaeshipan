@@ -31,7 +31,7 @@ public class UserController {
             return "register";
         }
         try {
-            userService.register(form.getUsername(), form.getPassword());
+            userService.register(form);
         } catch (IllegalArgumentException e) {
             model.addAttribute("usernameError", e.getMessage());
             return "register";
@@ -46,6 +46,7 @@ public class UserController {
 
     @GetMapping("/home")
     public String showBoard(Model model) {
-        return "home";
+        return "bulletin_board";
     }
+
 }

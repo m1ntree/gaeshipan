@@ -21,12 +21,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    /*
+
     @OneToMany(mappedBy = "author")
     private List<Post> posts = new ArrayList<>();
-
-
-     */
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+<head><title>New Post</title></head>
+<body>
+<h1>Create New Post</h1>
+
+<form th:action="@{/post}" method="post" th:object="${createPostRequest}">
+    <label>Title: <input type="text" th:field="*{title}" /></label><br>
+    <label>Content: <textarea th:field="*{content}"></textarea></label><br>
+    <button type="submit">Submit</button>
+</form>
+
+<a href="/bulletin_board">Back to Board</a>
+</body>
+</html>

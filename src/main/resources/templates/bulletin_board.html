@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+<head><title>Bulletin Board</title></head>
+<body>
+<h1>Welcome to the Bulletin Board</h1>
+
+<p>Logged in as <b th:text="${username}"></b></p>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Logout</button>
+</form>
+<a href="/post/new">Create New Post</a>
+
+<hr>
+<h2>Posts</h2>
+<ul>
+    <li th:each="post : ${posts}">
+        <b th:text="${post.title}"></b> -
+        <i th:text="${post.author.username}"></i> |
+        <span th:text="${#temporals.format(post.postDateTime, 'yyyy-MM-dd HH:mm')}"></span>
+        <p th:text="${post.content}"></p>
+    </li>
+</ul>
+</body>
+</html>

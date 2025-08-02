@@ -30,7 +30,7 @@ public class SecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/bulletin_board", true)
                         .permitAll()
                 )
                 .logout(logout -> logout.permitAll())
