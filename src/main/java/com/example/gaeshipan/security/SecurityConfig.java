@@ -25,15 +25,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/css/**").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/bulletin_board", "/css/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/bulletin_board", true)
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
-                .logout(logout -> logout.permitAll())
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                )
                 .userDetailsService(userDetailsService);
 
         return http.build();

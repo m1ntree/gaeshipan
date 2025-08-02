@@ -34,13 +34,18 @@ public class PostController {
 
     @GetMapping("/bulletin_board")
     public String showBoard(Model model, Principal principal) {
-        model.addAttribute("username", principal.getName());
+        if (principal != null) {
+            model.addAttribute("username", principal.getName());
+        }
         model.addAttribute("posts", postService.getAllPosts());
         return "bulletin_board";
     }
 
     @GetMapping("/post/new")
-    public String newPost(Model model) {
+    public String newPost(Model model, Principal principal) {
+        if (principal == null){
+            return "redirect:/login?reason=not_logged_in";
+        }
         model.addAttribute("createPostRequest", new CreatePostRequest());
         return "create_post";
     }

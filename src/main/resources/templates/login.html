@@ -8,6 +8,9 @@
     <label>Password: <input type="password" name="password"/></label><br>
     <button type="submit">Login</button>
 </form>
+<p th:if="${param.error} == 'not_logged_in'" style="color: red;">
+    You must be logged in to create a post.
+</p>
 <a href="/register">Don't have an account?</a>
 </body>
 </html>
